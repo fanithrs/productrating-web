@@ -8,7 +8,6 @@ Address: <%= @purchase.delivery_address %>
 <br />
 <%# TODO: Format the date time to make it more readable %>
 Purchased at: <%= @purchase.created_at %>
-
 <br />
 <br />
 
@@ -26,10 +25,17 @@ Purchased at: <%= @purchase.created_at %>
 
 <h2>Review</h2>
 
+<%# TODO: Display the review here --DONE-----%>
 <% if @purchase.review_exist? %>
-  <%# TODO: Display the review here %>
+	<% @purchase.reviews.each do |review| %>
+  Rating: <%= review.rating %><br>
+  Comment: <%= review.comment %><br>
+  Created at: <%= review.created_at %>
+  
+ <% end %>
 <% else %>
-  <%= link_to 'Give a Review', new_review_url(review: { purchase_id: @purchase.id }) %>
+  <%= link_to 'Give a Review', new_purchase_review_url(@purchase) %>
+  <%#= link_to 'Give a Review', new_review_url(review: { purchase_id: @purchase.id }) %>
 <% end %>
 
 </div>

@@ -11,6 +11,7 @@
 #
 class Product < ApplicationRecord
   has_many :purchases
+  #has_many :reviews
   
   validates :name, presence: true
   validates :quantity, presence: true
@@ -25,5 +26,6 @@ class Product < ApplicationRecord
       errors.add(:quantity, 'too few')
     end
   end
+
 
 end

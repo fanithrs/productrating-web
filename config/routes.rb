@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :products do
-    resources :purchases
+    resources :purchases 
   end
-  
-  resources :reviews
+
+resources :purchases do
+resources :reviews
+  end
   resources :stores
 end

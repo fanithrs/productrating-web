@@ -19,14 +19,20 @@
 #
 class Purchase < ApplicationRecord
   belongs_to :product
+  has_many :reviews
 
   validates :quantity, presence: true, numericality: { only_integer: true }
   validates :delivery_address, presence: true
 
-  # TODO: Implement this logic
+  # TODO: Implement this logic -- (DONE)
   # - Return true if a review for this purchase exists in the database 
   # - Return false otherwise
   def review_exist?
-    false
+    
+    if Review.where(purchase_id: id).exists?(conditions = :none)
+      true
+    else
+      false
+    end
   end
 end

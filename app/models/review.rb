@@ -19,6 +19,7 @@
 #
 class Review < ApplicationRecord
   belongs_to :purchase
+ # belongs_to :product
 
   validates :rating, presence: true, numericality: { only_integer: true }
   validates :comment, presence: true
